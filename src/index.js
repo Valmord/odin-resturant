@@ -1,3 +1,5 @@
 import './style.css';
+import createPageElements from './site.js';
 
-console.log('hello');
+const createElements = createPageElements();
+createElements.init();

@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('./fonts/spongeboy_me_bob1-webfont.woff2') format('woff2'),
+    url('./fonts/spongeboy_me_bob1-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+
 * {
     padding: 0;
     margin: 0;
@@ -5,12 +14,38 @@
 
 :root{
     font-size: 62.5%;
+    font-family: MyFont, serif;
 }
 
 body {
     background-color: #ebf2c9;
+}
+
+.home {
+    z-index: -1;
     background-image: url('./images/background.webp');
     background-repeat: no-repeat;
-    /* background-position: center; */
-    background-size: cover;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    height: 100vh;
+    width: 100%;
+    background-size: 100%;
+    font-size: 1.6rem;
+}
+
+nav {
+    height: 60px;
+    background-color: rgba(255, 255, 0, 0.85);
+    border-bottom: 2px solid black;
+
+    & h1 {
+        color: orangered;
+    }
+}
+
+h1 {
+    font-size: min(5rem, 5vh, 3vw);
+    margin: 3% 0 0 10%;
+    color: seashell;
 }
