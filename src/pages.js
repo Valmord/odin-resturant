@@ -1,17 +1,18 @@
 import { domElements } from "./dom-elements";
-import { classList as cL } from "./class-list";
-import { appendChildren, createElement, createElementWithClass } from "./utils";
+import { appendChildren, createElement, createElementWithClass, getElementByClass, 
+    classList as cL, 
+    createElementWithClasses} from "./utils";
 
 
 function homePage() {
     const create = () => {
         // appendChild(parent, ...children);
         appendChildren(domElements.contentElement, createMainElement());
-        appendChildren(cL.getElement(cL.homePage), createH2Element());
+        appendChildren(getElementByClass(cL.homePage), createH2Element());
     }
 
     const createMainElement = () => {
-        const mainElement = document.createElement('main');
+        const mainElement = document.createElement('div');
         mainElement.classList.add(cL.homePage);
         return mainElement;
     }
@@ -33,11 +34,12 @@ function homePage() {
 function menuPage(){
     const create = () => {
         appendChildren(domElements.contentElement, createMainElement());
-        appendChildren(cL.getElement(cL.menuPage), createElement('h2','About us'));
+        appendChildren(getElementByClass(cL.menuPage), createElementWithClass('div','', cL.menuContainer));
+        appendChildren(getElementByClass(cL.menuContainer), createElement('h2','Menu'));
     }
 
     const createMainElement = () => {
-        const mainElement = document.createElement('main');
+        const mainElement = document.createElement('div');
         mainElement.classList.add(cL.menuPage);
         mainElement.classList.add(cL.hidden);
         return mainElement;
@@ -55,11 +57,12 @@ function menuPage(){
 function aboutPage(){
     const create = () => {
         appendChildren(domElements.contentElement, createMainElement());
-        appendChildren(cL.getElement(cL.aboutPage), createElement('h2','About us'));
+        appendChildren(getElementByClass(cL.aboutPage), createElementWithClass('div','', cL.aboutContainer));
+        appendChildren(getElementByClass(cL.aboutContainer), createElement('h2','About'));
     }
 
     const createMainElement = () => {
-        const mainElement = document.createElement('main');
+        const mainElement = document.createElement('div');
         mainElement.classList.add(cL.aboutPage);
         mainElement.classList.add(cL.hidden);
         return mainElement;

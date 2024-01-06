@@ -1,3 +1,19 @@
+const classList = {
+    navbar: 'nav-bar',
+    homeTab: 'home-tab',
+    menuTab: 'menu-tab',
+    aboutTab: 'about-tab',
+
+    homePage: 'home-page',
+    menuPage: 'menu-page',
+    aboutPage: 'about-page',
+
+    menuContainer: 'menu-container',
+    aboutContainer: 'about-container',
+    hidden: 'hidden',
+}
+
+
 function appendChildren(parent, ...children) {
     children.forEach(child => parent.appendChild(child));
 }
@@ -16,8 +32,13 @@ function createElementWithClass(elementId, text, cssClass){
 
 function createElementWithClasses(elementId, text, cssClasses){
     const element = createElement(elementId, text)
-    cssClasses.forEach( cls => element.classList.add(cls))
+    element.classList.add(...cssClasses);
     return element;
 }
 
-export { appendChildren, createElement, createElementWithClass }
+function getElementByClass(cssClass){
+    return document.querySelector('.'+cssClass);
+}
+
+export { appendChildren, createElement, createElementWithClass,
+    createElementWithClasses, getElementByClass, classList }

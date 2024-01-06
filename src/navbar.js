@@ -1,29 +1,26 @@
 import { domElements } from "./dom-elements";
-import { classList as cL } from "./class-list";
-import { createAboutPage, createHomePage } from "./pages";
+import { getElementByClass, classList as cL } from "./utils";
 
 
 function addListeners(){
 
     const tabListeners = () => {
         const tabElements = [
-            cL.getElement(cL.homeTab),
-            cL.getElement(cL.menuTab),
-            cL.getElement(cL.aboutTab)
+            getElementByClass(cL.homeTab),
+            getElementByClass(cL.menuTab),
+            getElementByClass(cL.aboutTab)
     ]
 
-        tabElements.forEach(tab => { 
-            console.log(tab);
+        tabElements.forEach(tab => {
             tab.addEventListener('click', () => {
                 const tabPages = [
-                    cL.getElement(cL.homePage),
-                    cL.getElement(cL.menuPage),
-                    cL.getElement(cL.aboutPage)
+                    getElementByClass(cL.homePage),
+                    getElementByClass(cL.menuPage),
+                    getElementByClass(cL.aboutPage)
             ]
                 tabPages.forEach(page => page.classList.add(cL.hidden));
                 switch (true) {
                     case tab.classList.contains(cL.homeTab):
-                        console.log('hello');
                         return void tabPages[0].classList.remove(cL.hidden);
                     case tab.classList.contains(cL.menuTab): 
                         return void tabPages[1].classList.remove(cL.hidden);

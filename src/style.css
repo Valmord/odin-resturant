@@ -16,12 +16,16 @@
     font-size: 62.5%;
     font-family: MyFont, serif;
 
-
     --navbar-size: 50px;
+    --krusty-font-color: #b22d1e;
+    --krusty-back-color: #b9b1f4;
+    --main-font-color: seashell;;
+    --container-back-color: rgba(47, 97, 162, 0.455);
 }
 
 body {
     background-color: #ebf2c9;
+    color: var(--main-font-color);
 }
 
 nav {
@@ -30,14 +34,14 @@ nav {
     left: 0;
     height: var(--navbar-size);
     width: 100%;
-    background-color: rgba(255, 255, 0, 0.85);
+    background-color: var(--krusty-back-color);
     border-bottom: 2px solid black;
     display: grid;
     grid-template-columns: max-content 1fr;
     align-items: end;
 
     & h1 {
-        color: orangered;
+        color: var(--krusty-font-color);
         font-size: 3rem;
         align-self: center;
         margin-left: 20px;
@@ -61,7 +65,7 @@ nav > ul > li:hover {
     color: blue;
 }
 
-.home-page, .about-page {
+.home-page, .menu-page, .about-page {
     z-index: -1;
     background-image: url('./images/background.webp');
     background-repeat: no-repeat;
@@ -72,9 +76,7 @@ nav > ul > li:hover {
     width: 100%;
     background-size: 100%;
     font-size: 1.6rem;
-
-
-
+    display: flex;
 }
 
 .home-page {
@@ -87,6 +89,19 @@ nav > ul > li:hover {
 
 .about-page{
     background-image: url('./images/krusty-krab-inside-2.jpg');
+}
+
+.menu-page {
+    background-image: url('./images/krusty-krab-inside.webp');
+}
+
+.menu-container, .about-container {
+    height: calc(90% - var(--navbar-size));
+    width: 80%;
+    background-color: var(--container-back-color);
+    margin: auto;
+    padding: 30px;
+    display: grid;
 }
 
 .hidden {
