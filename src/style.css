@@ -20,7 +20,7 @@
     --krusty-font-color: #b22d1e;
     --krusty-back-color: #b9b1f4;
     --main-font-color: seashell;;
-    --container-back-color: rgba(47, 97, 162, 0.455);
+    --container-back-color: rgba(47, 97, 162, 0.555);
 }
 
 body {
@@ -104,10 +104,17 @@ nav > ul > li:hover {
     position: relative;
     display: grid;
     grid-template-columns: min(300px, 1fr);
-    grid-template-rows: 50px;
+    grid-template-rows: 40px;
     grid-auto-rows: 1fr;
     overflow: auto;
 }
+
+.menu-container{
+    grid-template-columns: min(300px, 1fr);
+    grid-template-rows: 40px 20px;
+    grid-auto-rows: 200px;
+}
+
 
 .menu-pic {
     position: absolute;

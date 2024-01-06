@@ -2,14 +2,27 @@ import { getElementByClass, classList as cL, createElementWithClass, appendChild
     createElement, content } from "./utils";
 
 
-function addListeners(){
+const listeners = (function addListeners(){
+
+    const logoListener = () => {
+        console.log(document.querySelector('.'+cL.homePage));   
+        const tabPages = [
+            getElementByClass(cL.homePage),
+            getElementByClass(cL.menuPage),
+            getElementByClass(cL.aboutPage)
+        ]
+        
+        // console.log(getElementByClass(cL.homePage));
+        // tabPages.forEach(page => console.log(page));
+        // tabPages[0].classList.remove(cL.hidden);
+    }
 
     const tabListeners = () => {
         const tabElements = [
             getElementByClass(cL.homeTab),
             getElementByClass(cL.menuTab),
             getElementByClass(cL.aboutTab)
-    ]
+    ];
 
         tabElements.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -17,7 +30,7 @@ function addListeners(){
                     getElementByClass(cL.homePage),
                     getElementByClass(cL.menuPage),
                     getElementByClass(cL.aboutPage)
-            ]
+            ];
                 tabPages.forEach(page => page.classList.add(cL.hidden));
                 switch (true) {
                     case tab.classList.contains(cL.homeTab):
@@ -33,11 +46,10 @@ function addListeners(){
     })
     }
 
-    return { tabListeners };
-}
-const listeners = addListeners();
+    return { tabListeners, logoListener };
+})();
 
-function navbar() {
+const createHeader = (function navbar() {
     const create = () => {
         const tabNames = ['Home', 'Menu', 'About'];
         const navElement = createElementWithClass('nav','',cL.navbar);
@@ -56,11 +68,10 @@ function navbar() {
     const init = () => {
         create();
         listeners.tabListeners();
+        listeners.logoListener();
     }
 
     return { init };
-}
-
-const createHeader = navbar();
+})();
 
 export { createHeader };
