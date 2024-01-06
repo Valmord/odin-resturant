@@ -1,8 +1,6 @@
 import './style.css';
+import { createHomePage } from './home-page.js';
 import { createHeader } from './navbar.js';
-import { createAboutPage, createHomePage, createMenuPage } from './pages.js';
 
-createHomePage.init();
-createAboutPage.init();
-createMenuPage.init();
+createHomePage();
 createHeader.init();

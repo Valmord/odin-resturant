@@ -22,6 +22,9 @@ const classList = {
     hidden: 'hidden',
 }
 
+const imagesSrc = '../src/images/';
+
+
 function appendChild(parent, child) {
     parent.appendChild(child);
     return child;
@@ -63,5 +66,5 @@ function getElementByClass(cssClass){
 
 const content = document.querySelector('#content');
 
-export { appendChildren, appendChild, createElement, createElementWithClass,
+export { appendChildren, appendChild, createElement, createElementWithClass, imagesSrc,
     createElementWithClasses, getElementByClass, classList, content, createImgElement }

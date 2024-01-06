@@ -1,9 +1,6 @@
 import { appendChild, createElement, createElementWithClass, getElementByClass, 
     classList as cL, appendChildren, createElementWithClasses, content, createImgElement} from "./utils";
 
-
-const imagesSrc = '../src/images/';
-
 const home = (function homePage() {
     const create = () => {
         // appendChild(parent, ...children);

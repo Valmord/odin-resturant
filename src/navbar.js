@@ -1,49 +1,21 @@
+import { createAboutPage } from "./about-page";
+import { createHomePage } from "./home-page";
+import { createMenuPage } from "./menu-page";
 import { getElementByClass, classList as cL, createElementWithClass, appendChild, 
-    createElement, content } from "./utils";
+    createElement} from "./utils";
 
 
 const listeners = (function addListeners(){
 
     const logoListener = () => {
-        const tabPages = [
-            getElementByClass(cL.homePage),
-            getElementByClass(cL.menuPage),
-            getElementByClass(cL.aboutPage)
-        ]
         const logo = document.querySelector('.nav-bar h1');
-        logo.addEventListener('click', () => {
-            tabPages.forEach(page => page.classList.add(cL.hidden));
-            tabPages[0].classList.remove(cL.hidden);
-        })        
+        logo.addEventListener('click', createHomePage)        
     }
 
     const tabListeners = () => {
-        const tabElements = [
-            getElementByClass(cL.homeTab),
-            getElementByClass(cL.menuTab),
-            getElementByClass(cL.aboutTab)
-    ];
-
-        tabElements.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabPages = [
-                    getElementByClass(cL.homePage),
-                    getElementByClass(cL.menuPage),
-                    getElementByClass(cL.aboutPage)
-            ];
-                tabPages.forEach(page => page.classList.add(cL.hidden));
-                switch (true) {
-                    case tab.classList.contains(cL.homeTab):
-                        return void tabPages[0].classList.remove(cL.hidden);
-                    case tab.classList.contains(cL.menuTab): 
-                        return void tabPages[1].classList.remove(cL.hidden);
-                    case tab.classList.contains(cL.aboutTab):
-                        return void tabPages[2].classList.remove(cL.hidden);
-                    default:
-                        break;
-                }
-        })
-    })
+        getElementByClass(cL.homeTab).addEventListener('click', createHomePage);
+        getElementByClass(cL.menuTab).addEventListener('click', createMenuPage);
+        getElementByClass(cL.aboutTab).addEventListener('click', createAboutPage);
     }
 
     return { tabListeners, logoListener };
@@ -52,7 +24,7 @@ const listeners = (function addListeners(){
 const createHeader = (function navbar() {
     const create = () => {
         const tabNames = ['Home', 'Menu', 'About'];
-        const navElement = createElementWithClass('nav','',cL.navbar);
+        const navElement = getElementByClass(cL.navbar);
         appendChild(navElement,createElement('h1','The Krusty Krab'));
         
         const navList = createElement('ul');
@@ -62,7 +34,6 @@ const createHeader = (function navbar() {
             navList.appendChild(navListItem);
         }
         navElement.appendChild(navList);
-        content.appendChild(navElement);
     }
 
     const init = () => {
