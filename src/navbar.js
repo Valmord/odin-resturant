@@ -1,12 +1,10 @@
+import { domElements } from "./dom-elements";
 
-const domElements = {
-    contentElement: document.querySelector('#content'),
-}
-
-function createPageElements() {
+function createHeader() {
     const createNav = () => {
         const tabNames = ['Home', 'Menu', 'About'];
         const navElement = document.createElement('nav');
+        navElement.classList.add('navbar');
         const navHeaderElement = document.createElement('h1');
         navHeaderElement.textContent = 'The Krusty Krab';
         navElement.appendChild(navHeaderElement);
@@ -15,11 +13,10 @@ function createPageElements() {
         for (let i = 0; i < tabNames.length; i++){
             const navListItem = document.createElement('li');
             navListItem.textContent = tabNames[i];
+            navListItem.classList.add(tabNames[i].toLowerCase()+'-button');
             navList.appendChild(navListItem);
         }
-        
         navElement.appendChild(navList);
-
         domElements.contentElement.appendChild(navElement);
     }
 
@@ -27,17 +24,8 @@ function createPageElements() {
         createNav();
     }
 
-    const sayHello = () => {
-        alert('Hello');
-    }
-
-    return { init, sayHello };
+    return { init };
 }
 
 
-
-function showHomePage(){
-
-}
-
-export default createPageElements;
+export default createHeader;

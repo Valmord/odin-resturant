@@ -1,5 +1,5 @@
 import './style.css';
-import createPageElements from './site.js';
+import createHeader from './navbar.js';
 
-const createElements = createPageElements();
+const createElements = createHeader();
 createElements.init();
