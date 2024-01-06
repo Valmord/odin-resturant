@@ -13,6 +13,10 @@ const classList = {
     hidden: 'hidden',
 }
 
+function appendChild(parent, child) {
+    parent.appendChild(child);
+    return child;
+}
 
 function appendChildren(parent, ...children) {
     children.forEach(child => parent.appendChild(child));
@@ -30,7 +34,7 @@ function createElementWithClass(elementId, text, cssClass){
     return element;
 }
 
-function createElementWithClasses(elementId, text, cssClasses){
+function createElementWithClasses(elementId, text, ...cssClasses){
     const element = createElement(elementId, text)
     element.classList.add(...cssClasses);
     return element;
@@ -40,5 +44,5 @@ function getElementByClass(cssClass){
     return document.querySelector('.'+cssClass);
 }
 
-export { appendChildren, createElement, createElementWithClass,
+export { appendChildren, appendChild, createElement, createElementWithClass,
     createElementWithClasses, getElementByClass, classList }

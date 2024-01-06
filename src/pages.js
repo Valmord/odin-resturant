@@ -1,14 +1,13 @@
 import { domElements } from "./dom-elements";
-import { appendChildren, createElement, createElementWithClass, getElementByClass, 
-    classList as cL, 
-    createElementWithClasses} from "./utils";
+import { appendChild, createElement, createElementWithClass, getElementByClass, 
+    classList as cL, appendChildren, createElementWithClasses} from "./utils";
 
 
 function homePage() {
     const create = () => {
         // appendChild(parent, ...children);
-        appendChildren(domElements.contentElement, createMainElement());
-        appendChildren(getElementByClass(cL.homePage), createH2Element());
+        appendChild(domElements.contentElement, createMainElement());
+        appendChild(getElementByClass(cL.homePage), createH2Element());
     }
 
     const createMainElement = () => {
@@ -33,9 +32,9 @@ function homePage() {
 
 function menuPage(){
     const create = () => {
-        appendChildren(domElements.contentElement, createMainElement());
-        appendChildren(getElementByClass(cL.menuPage), createElementWithClass('div','', cL.menuContainer));
-        appendChildren(getElementByClass(cL.menuContainer), createElement('h2','Menu'));
+        const main = appendChild(domElements.contentElement, createMainElement());
+        const menuContainer = appendChild(main, createElementWithClass('div','', cL.menuContainer));
+        appendChild(menuContainer, createElement('h2','Menu'));
     }
 
     const createMainElement = () => {
@@ -43,6 +42,10 @@ function menuPage(){
         mainElement.classList.add(cL.menuPage);
         mainElement.classList.add(cL.hidden);
         return mainElement;
+    }
+
+    const createMenuItem = () => {
+
     }
 
     const init = () => {
@@ -56,16 +59,31 @@ function menuPage(){
 
 function aboutPage(){
     const create = () => {
-        appendChildren(domElements.contentElement, createMainElement());
-        appendChildren(getElementByClass(cL.aboutPage), createElementWithClass('div','', cL.aboutContainer));
-        appendChildren(getElementByClass(cL.aboutContainer), createElement('h2','About'));
+        const main = createElementWithClasses('div','',cL.aboutPage,cL.hidden)
+        const aboutContainer = appendChild(main, createElementWithClass('div','', cL.aboutContainer));
+        appendChild(aboutContainer, createElement('h2','About'));
+        createAboutGridItems(aboutContainer);
+
+        appendChild(domElements.contentElement,main);
     }
 
-    const createMainElement = () => {
-        const mainElement = document.createElement('div');
-        mainElement.classList.add(cL.aboutPage);
-        mainElement.classList.add(cL.hidden);
-        return mainElement;
+    const createAboutGridItems = (container) => {
+        const imagesSrc = '../src/images/';
+        const gridImages = ['MrKrabs.jpg','Spongebob.jpg','Squidward.jpg'];
+        const gridText = [
+            'Eugene Krabs, a.k.a Mr Krabs, is the owner of the Krusty Krab. Mr Krabs is an entrepreneur and overall extraordinaire. Come and eat at the Krusty Krab to get a bargin today (no refunds!)',
+            'Spongebob Squarepants, sole fry cook at the Krusty Krab. Just alright at his job, he cooks every Krabby patty with love.',
+            'Squidward Tentacles, Krusty Krab cashier.']
+        const gridArr = [];
+        gridImages.forEach( (image, index) => {
+            const gridItem = createElementWithClasses('div','','about', 'grid-item');
+            const img = document.createElement('img');
+            img.src = imagesSrc+image;
+            const p = createElement('p', gridText[index]);
+            appendChildren(gridItem, img, p); 
+            appendChild(container,gridItem);
+            
+        })
     }
 
     const init = () => {
