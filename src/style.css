@@ -15,6 +15,9 @@
 :root{
     font-size: 62.5%;
     font-family: MyFont, serif;
+
+
+    --navbar-size: 50px;
 }
 
 body {
@@ -25,7 +28,7 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    height: 60px;
+    height: var(--navbar-size);
     width: 100%;
     background-color: rgba(255, 255, 0, 0.85);
     border-bottom: 2px solid black;
@@ -58,22 +61,34 @@ nav > ul > li:hover {
     color: blue;
 }
 
-.home-tab {
+.home-page, .about-page {
     z-index: -1;
     background-image: url('./images/background.webp');
     background-repeat: no-repeat;
     position: fixed;
     left: 0;
-    top: 60px;
+    top: var(--navbar-size);
     height: 100vh;
     width: 100%;
     background-size: 100%;
     font-size: 1.6rem;
 
+
+
+}
+
+.home-page {
     & h2 {
         font-size: min(5rem, 5vh, 3vw);
         margin: 3% 0 0 10%;
         color: seashell;
     }
+}
 
+.about-page{
+    background-image: url('./images/krusty-krab-inside-2.jpg');
+}
+
+.hidden {
+    display: none;
 }

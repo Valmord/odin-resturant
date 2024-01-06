@@ -4,4 +4,5 @@ export const domElements = {
     homeButton: document.querySelector('.home'),
     menuButton: document.querySelector('.menu'),
     aboutButton: document.querySelector('.about'),
+    homePage: document.querySelector('.home-page'),
 }

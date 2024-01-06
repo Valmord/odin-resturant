@@ -1,5 +1,8 @@
 import './style.css';
-import createHeader from './navbar.js';
+import { createHeader } from './navbar.js';
+import { createAboutPage, createHomePage, createMenuPage } from './pages.js';
 
-const createElements = createHeader();
-createElements.init();
+createHeader.init();
+createHomePage.init();
+createAboutPage.init();
+createMenuPage.init();
