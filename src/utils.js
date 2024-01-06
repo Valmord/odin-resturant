@@ -8,12 +8,16 @@ const classList = {
     menuPage: 'menu-page',
     aboutPage: 'about-page',
 
+    menuGrid: 'menu-grid',
     menuContainer: 'menu-container',
     aboutContainer: 'about-container',
+
     reviewButton: 'review-button',
     reviewModal: 'review-modal',
     reviewItem: 'review-item',
     reviewPicture: 'review-pic',
+    infoButton: 'info-button',
+    infoModal: 'info-modal',
     menuPicture: 'menu-pic',
     hidden: 'hidden',
 }

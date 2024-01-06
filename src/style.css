@@ -92,24 +92,25 @@ nav > ul > li:hover {
     }
 }
 
-.review-button, .review-modal {
+.review-button, .review-modal, .info-button, .info-modal {
     background-color: var(--container-back-color);
     padding: 15px;
     position: absolute;
     right: 20px;
     top: 20px;
     border-radius: 25px;
-    width: fit-content;
+    width: 430px;
 }
 
-.review-button {
+.review-button, .info-button {
     border: 1px solid var(--krusty-back-color);
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 130px;
 }
 
-.review-button:hover {
+.review-button:hover, .info-button:hover {
     cursor: pointer;
     background-color: blue;
 }
@@ -117,22 +118,42 @@ nav > ul > li:hover {
 .review-modal {
     width: 400px;
     height: fit-content;
+
+    & .review-item {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+    
+    & .review-pic {
+        flex: 0 1 auto;
+        height: 200px;
+    }    
 }
 
-.review-modal:hover {
+.review-modal:hover, .info-modal:hover {
     opacity: 0.8;
     cursor: pointer;
 }
 
-.review-item {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
+.info-button, .info-modal {
+    top: 90px;
 }
 
-.review-pic {
-    flex: 0 1 auto;
-    height: 200px;
+.info-modal:first-line {
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+.info-modal > p:first-child {
+    margin-top: 15px;
+}
+.info-modal > p:nth-child(4) {
+    margin-top: 15px;
+}
+
+.modal-offset{
+    top: 300px;
 }
 
 .about-page{
@@ -150,38 +171,54 @@ nav > ul > li:hover {
     margin: auto;
     padding: 30px;
     position: relative;
+}
+
+.about-container, .menu-grid {
     display: grid;
     grid-template-columns: min(300px, 1fr);
-    grid-template-rows: 40px;
     grid-auto-rows: 1fr;
     overflow: auto;
+    grid-template-rows: 40px;
+
 }
 
-.menu-container{
+.menu-container {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-grid {
     grid-template-columns: min(300px, 1fr);
-    grid-template-rows: 40px 20px;
     grid-auto-rows: 200px;
+    flex: 0 0 min(400px, 50%);
 }
-
 
 .menu-pic {
+    margin-top: 15px;
+    flex: 1 0 0;
+    width: 100%;
+}
+
+/* .menu-pic {
     position: absolute;
     top: 30px;
     right: 30px;
     height: auto;
     width: clamp(100px, 40%, 500px);
-}
+} */
 
 .grid-item {
     display: flex;
     gap: 15px;
 }
 
+
 .grid-item > img {
     height: min(160px, 35vw);
     aspect-ratio: 4/3;
-    /* width: auto; */
 }
+
+
 
 .hidden {
     display: none;
