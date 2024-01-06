@@ -10,6 +10,7 @@ const classList = {
 
     menuContainer: 'menu-container',
     aboutContainer: 'about-container',
+    menuPicture: 'menu-pic',
     hidden: 'hidden',
 }
 
@@ -20,6 +21,13 @@ function appendChild(parent, child) {
 
 function appendChildren(parent, ...children) {
     children.forEach(child => parent.appendChild(child));
+}
+
+function createImgElement(src,cls){
+    const element = document.createElement('img');
+    element.src = src;
+    if (cls) element.classList.add(cls);
+    return element;
 }
 
 function createElement(elementId, text){
@@ -44,5 +52,7 @@ function getElementByClass(cssClass){
     return document.querySelector('.'+cssClass);
 }
 
+const content = document.querySelector('#content');
+
 export { appendChildren, appendChild, createElement, createElementWithClass,
-    createElementWithClasses, getElementByClass, classList }
+    createElementWithClasses, getElementByClass, classList, content, createImgElement }

@@ -101,10 +101,20 @@ nav > ul > li:hover {
     background-color: var(--container-back-color);
     margin: auto;
     padding: 30px;
+    position: relative;
     display: grid;
     grid-template-columns: min(300px, 1fr);
     grid-template-rows: 50px;
     grid-auto-rows: 1fr;
+    overflow: auto;
+}
+
+.menu-pic {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    height: min(350px,30vw);
+    width: auto;
 }
 
 .grid-item {
@@ -113,7 +123,7 @@ nav > ul > li:hover {
 }
 
 .grid-item > img {
-    height: 150px;
+    height: min(160px, 35vw);
     aspect-ratio: 4/3;
     /* width: auto; */
 }

@@ -1,12 +1,13 @@
-import { domElements } from "./dom-elements";
 import { appendChild, createElement, createElementWithClass, getElementByClass, 
-    classList as cL, appendChildren, createElementWithClasses} from "./utils";
+    classList as cL, appendChildren, createElementWithClasses, content, createImgElement} from "./utils";
 
+
+const imagesSrc = '../src/images/';
 
 function homePage() {
     const create = () => {
         // appendChild(parent, ...children);
-        appendChild(domElements.contentElement, createMainElement());
+        appendChild(content, createMainElement());
         appendChild(getElementByClass(cL.homePage), createH2Element());
     }
 
@@ -32,8 +33,9 @@ function homePage() {
 
 function menuPage(){
     const create = () => {
-        const main = appendChild(domElements.contentElement, createMainElement());
+        const main = appendChild(content, createMainElement());
         const menuContainer = appendChild(main, createElementWithClass('div','', cL.menuContainer));
+        appendChild(menuContainer, createImgElement(imagesSrc+'menu.jpg',cL.menuPicture))
         appendChild(menuContainer, createElement('h2','Menu'));
     }
 
@@ -64,11 +66,10 @@ function aboutPage(){
         appendChild(aboutContainer, createElement('h2','About'));
         createAboutGridItems(aboutContainer);
 
-        appendChild(domElements.contentElement,main);
+        appendChild(content,main);
     }
 
     const createAboutGridItems = (container) => {
-        const imagesSrc = '../src/images/';
         const gridImages = ['MrKrabs.jpg','Spongebob.jpg','Squidward.jpg'];
         const gridText = [
             'Eugene Krabs, a.k.a Mr Krabs, is the owner of the Krusty Krab. Mr Krabs is an entrepreneur and overall extraordinaire. Come and eat at the Krusty Krab to get a bargin today (no refunds!)',

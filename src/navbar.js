@@ -1,5 +1,5 @@
-import { domElements } from "./dom-elements";
-import { getElementByClass, classList as cL } from "./utils";
+import { getElementByClass, classList as cL, createElementWithClass, appendChild, 
+    createElement, content } from "./utils";
 
 
 function addListeners(){
@@ -40,21 +40,17 @@ const listeners = addListeners();
 function navbar() {
     const create = () => {
         const tabNames = ['Home', 'Menu', 'About'];
-        const navElement = document.createElement('nav');
-        navElement.classList.add(cL.navbar);
-        const navHeaderElement = document.createElement('h1');
-        navHeaderElement.textContent = 'The Krusty Krab';
-        navElement.appendChild(navHeaderElement);
+        const navElement = createElementWithClass('nav','',cL.navbar);
+        appendChild(navElement,createElement('h1','The Krusty Krab'));
         
-        const navList = document.createElement('ul'); 
+        const navList = createElement('ul');
         for (let i = 0; i < tabNames.length; i++){
-            const navListItem = document.createElement('li');
-            navListItem.textContent = tabNames[i];
-            navListItem.classList.add(tabNames[i].toLowerCase()+'-tab');
+            const navListItem = createElementWithClass(
+                'li', tabNames[i],tabNames[i].toLowerCase()+'-tab')
             navList.appendChild(navListItem);
         }
         navElement.appendChild(navList);
-        domElements.contentElement.appendChild(navElement);
+        content.appendChild(navElement);
     }
 
     const init = () => {
