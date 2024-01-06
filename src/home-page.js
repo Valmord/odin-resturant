@@ -1,8 +1,8 @@
 import { appendChild, createElement, createElementWithClass, getElementByClass, imagesSrc,
-    classList as cL, appendChildren, createElementWithClasses, content, createImgElement} from "./utils";
+    classList as cL, createElementWithClasses, content, createImgElement} from "./utils";
 
     
-const home = (function homePage() {
+const createHomePage = (function homePage() {
     const create = () => {
         // appendChild(parent, ...children);
         content.innerHTML = '';
@@ -73,7 +73,6 @@ const home = (function homePage() {
     }
 
     return { init };
-})();
-const createHomePage = home.init;
+})().init;
 
 export { createHomePage };
