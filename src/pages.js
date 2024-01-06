@@ -4,23 +4,28 @@ import { appendChild, createElement, createElementWithClass, getElementByClass,
 
 const imagesSrc = '../src/images/';
 
-function homePage() {
+const home = (function homePage() {
     const create = () => {
         // appendChild(parent, ...children);
-        appendChild(content, createElementWithClass('div','',cL.homePage));
-        appendChild(getElementByClass(cL.homePage), createH2Element());
+        const main = appendChild(content, createElementWithClass('div','',cL.homePage));
+        appendChild(getElementByClass(cL.homePage), createElement('h2','Welcome to...'));
+        const reviewToggle = appendChild(main, createElementWithClass('div','sea reviews',cL.reviewButton));
+        const reviewModal = appendChild(main, createElementWithClasses('div', 'Sea Reviews', cL.reviewModal,cL.hidden));
+        const reviewItem = appendChild(reviewModal, createElementWithClass('div','',cL.reviewItem));
+        appendChild(reviewItem, createImgElement(imagesSrc+'plankton.png','plankton',cL.reviewPicture));
+        appendChild(reviewItem, createElement('p','The only place with a secret formula worth stealing - Plankton'))
+        reviewListeners(reviewToggle, reviewModal)
     }
 
-    const createMainElement = () => {
-        const mainElement = document.createElement('div');
-        mainElement.classList.add(cL.homePage);
-        return mainElement;
-    }
-    
-    const createH2Element = () => {
-        const h2Element = document.createElement('h2');
-        h2Element.textContent = "Welcome to...";
-        return h2Element;
+    const reviewListeners = (button, modal) => {
+        button.addEventListener('click', () => {
+            button.classList.toggle(cL.hidden);
+            modal.classList.toggle(cL.hidden);
+        })
+        modal.addEventListener('click', () => {
+            button.classList.toggle(cL.hidden);
+            modal.classList.toggle(cL.hidden);
+        })
     }
 
     const init = () => {
@@ -28,24 +33,17 @@ function homePage() {
     }
 
     return { init };
-}
+})();
 
 
-function menuPage(){
+const menu = (function menuPage(){
     const create = () => {
-        const main = appendChild(content, createMainElement());
+        const main = appendChild(content, createElementWithClasses('div','',cL.menuPage,cL.hidden));
         const menuContainer = appendChild(main, createElementWithClass('div','', cL.menuContainer));
-        appendChild(menuContainer, createImgElement(imagesSrc+'menu.jpg',cL.menuPicture))
+        appendChild(menuContainer, createImgElement(imagesSrc+'menu.jpg','menu',cL.menuPicture))
         appendChild(menuContainer, createElement('h2','Menu'));
         appendChild(menuContainer, createElementWithClass('h6','(no refunds)','menu-no-refunds'));  
         createMenuGridItems(menuContainer); 
-    }
-
-    const createMainElement = () => {
-        const mainElement = document.createElement('div');
-        mainElement.classList.add(cL.menuPage);
-        mainElement.classList.add(cL.hidden);
-        return mainElement;
     }
 
     const createMenuGridItems = (container) => {
@@ -53,8 +51,7 @@ function menuPage(){
         const gridText = ['Krabby Patty', 'Krabby Meal', 'Kelp Shake', 'Coral Bits'];
         gridImages.forEach( (image, index) => {
             const gridItem = createElementWithClasses('div','','menu', 'grid-item');
-            const img = document.createElement('img');
-            img.src = imagesSrc+image;
+            const img = createImgElement(imagesSrc+image,gridItem[index]);
             const p = createElement('p', gridText[index]);
             appendChildren(gridItem, img, p); 
             appendChild(container,gridItem);  
@@ -66,11 +63,11 @@ function menuPage(){
     }
 
     return { init };
-}
+})();
 
 
 
-function aboutPage(){
+const about = (function aboutPage(){
     const create = () => {
         const main = appendChild(content, createElementWithClasses('div','',cL.aboutPage,cL.hidden));
         const aboutContainer = appendChild(main, createElementWithClass('div','', cL.aboutContainer));
@@ -86,8 +83,7 @@ function aboutPage(){
             'Squidward Tentacles, Krusty Krab cashier.'];
         gridImages.forEach( (image, index) => {
             const gridItem = createElementWithClasses('div','','about', 'grid-item');
-            const img = document.createElement('img');
-            img.src = imagesSrc+image;
+            const img = createImgElement(imagesSrc+image,gridText[index]);
             const p = createElement('p', gridText[index]);
             appendChildren(gridItem, img, p); 
             appendChild(container,gridItem);
@@ -99,33 +95,6 @@ function aboutPage(){
     }
 
     return { init };
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const home = homePage();
-const about = aboutPage();
-const menu = menuPage();
+})();
 
 export { home as createHomePage, about as createAboutPage, menu as createMenuPage };

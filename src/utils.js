@@ -10,6 +10,10 @@ const classList = {
 
     menuContainer: 'menu-container',
     aboutContainer: 'about-container',
+    reviewButton: 'review-button',
+    reviewModal: 'review-modal',
+    reviewItem: 'review-item',
+    reviewPicture: 'review-pic',
     menuPicture: 'menu-pic',
     hidden: 'hidden',
 }
@@ -23,9 +27,10 @@ function appendChildren(parent, ...children) {
     children.forEach(child => parent.appendChild(child));
 }
 
-function createImgElement(src,cls){
+function createImgElement(src, alt, cls){
     const element = document.createElement('img');
     element.src = src;
+    element.alt = alt;
     if (cls) element.classList.add(cls);
     return element;
 }

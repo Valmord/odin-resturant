@@ -5,16 +5,16 @@ import { getElementByClass, classList as cL, createElementWithClass, appendChild
 const listeners = (function addListeners(){
 
     const logoListener = () => {
-        console.log(document.querySelector('.'+cL.homePage));   
         const tabPages = [
             getElementByClass(cL.homePage),
             getElementByClass(cL.menuPage),
             getElementByClass(cL.aboutPage)
         ]
-        
-        // console.log(getElementByClass(cL.homePage));
-        // tabPages.forEach(page => console.log(page));
-        // tabPages[0].classList.remove(cL.hidden);
+        const logo = document.querySelector('.nav-bar h1');
+        logo.addEventListener('click', () => {
+            tabPages.forEach(page => page.classList.add(cL.hidden));
+            tabPages[0].classList.remove(cL.hidden);
+        })        
     }
 
     const tabListeners = () => {
